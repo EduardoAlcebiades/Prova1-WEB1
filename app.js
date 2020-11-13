@@ -36,20 +36,29 @@ function validatorCpfCnpj(event) {
 
   const cpfCnpj = $("#cpf-cnpj-input")[0].value;
   const nome = $("#name-input")[0].value;
+  const cep = $("#cep-input")[0].value;
 
-  if (fisica && cpfCnpj.length != 14 && nome) {
+  if (fisica && cpfCnpj && cpfCnpj.length != 14 && nome) {
     event.preventDefault();
 
     alert("Digite o CPF completo");
-    
+
     return;
   }
 
-  if (juridica && cpfCnpj.length != 18 && nome) {
+  if (juridica && cpfCnpj && cpfCnpj.length != 18 && nome) {
     event.preventDefault();
-    
+
     alert("Digite o CNPJ completo");
-    
+
+    return;
+  }
+
+  if (cep && cep.length != 9 && cpfCnpj) {
+    event.preventDefault();
+
+    alert("Digite o CEP completo");
+
     return;
   }
 }
